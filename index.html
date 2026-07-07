@@ -1,76 +1,164 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    color: #333;
-    line-height: 1.6;
-}
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, BarChart3, ShieldCheck, PieChart, TrendingUp, Wallet, CheckCircle2, Menu, X, Star, Calculator } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, BarChart3, ShieldCheck, PieChart, TrendingUp, Wallet, CheckCircle2, Menu, X, Star, Calculator } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+const services = [
+  {
+    icon: Wallet,
+    title: "Personal finance planning",
+    copy: "Build a practical money system around income, spending, saving, debt and long-term goals."
+  },
+  {
+    icon: PieChart,
+    title: "Budget and cash-flow tools",
+    copy: "Track what matters with simple dashboards, monthly summaries and action-focused insights."
+  },
+  {
+    icon: TrendingUp,
+    title: "Investment readiness",
+    copy: "Understand risk, time horizon and diversification before making major financial decisions."
+  }
+];
+const stats = [
+  ["15 min", "free discovery call"],
+  ["3 steps", "from review to action plan"],
+  ["100%", "plain-English guidance"]
+];
+const plans = [
+  {
+    name: "Starter Review",
+    price: "£49",
+    detail: "For quick clarity on budgets and spending habits.",
+    features: ["30-minute review", "Budget snapshot", "Top 3 action points"]
+  },
+  {
+    name: "Money Reset",
+    price: "£149",
+    detail: "For a full cash-flow and goal-planning session.",
+    features: ["90-minute consultation", "Custom monthly plan", "Debt and savings priorities"],
+    featured: true
+  },
+  {
+    name: "Ongoing Support",
+    price: "£299",
+    detail: "For accountability and monthly optimisation.",
+    features: ["Monthly check-ins", "Goal tracking", "Quarterly financial review"]
+  }
+];
+export default function FinanceWebsiteRedesign() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("Money Reset");
+  const selected = useMemo(() => plans.find((p) => p.name === selectedPlan), [selectedPlan]);
+  return (
+    <div className="min-h-screen bg-slate-950 text-white">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-emerald-400/20 blur-3xl" />
+        <div className="absolute top-96 -left-24 h-96 w-96 rounded-full bg-cyan-400/10 blur-3xl" />
+      </div>
+      <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+        <div className="flex items-center gap-3">
+          <div className="grid h-10 w-10 place-items-center rounded-2xl bg-emerald-400 text-slate-950 shadow-lg shadow-emerald-400/20">
+            <BarChart3 className="h-5 w-5" />
+          </div>
+          <div>
+            <p className="text-lg font-bold tracking-tight">Anna Finance</p>
+            <p className="text-xs text-slate-400">Clear money decisions</p>
+          </div>
+        </div>
+        <nav className="hidden items-center gap-8 text-sm text-slate-300 md:flex">
+          #servicesServices</a>
+          <a href="#process" className="hover:text-white">Process</a>
+          <a href="#pricing" className="hover:text-white">Pricing</a>
+          <a href="#contact" className="hover:text-white">Contact</a>
+        </nav>
+        <Button className="hidden rounded-2xl bg-white px-5 text-slate-950 hover:bg-emerald-100 md:inline-flex">
+          Book a call
+        </Button>
+        <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation">
+          {menuOpen ? <X /> : <Menu />}
+        </button>
+      </header>
+      {menuOpen && (
+        <div className="relative z-20 mx-6 rounded-3xl border border-white/10 bg-slate-900/95 p-5 shadow-2xl md:hidden">
+          <div className="grid gap-4 text-slate-200">
+            <a href="#services">Services</a>
+            <a href="#process">Process</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      )}
+      )}
+              <ShieldCheck className="h-4 w-4" /> Independent guidance for everyday finance
+            </div>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              A polished finance service website focused on trust, clarity and conversion — with a stronger hero, clearer service cards, visible proof points and a simple call-to-action journey.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button className="h-12 rounded-2xl bg-emerald-400 px-6 font-semibold text-slate-950 hover:bg-emerald-300">
+                Start your review <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" className="h-12 rounded-2xl border-white/15 bg-white/5 px-6 text-white hover:bg-white/10">
+                View services
+              </Button>
+            </div>
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 10%;
-    background: #0d2f5f;
-    color: white;
-}
+            </div>
+                <div className="mb-6 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-slate-400">Monthly overview</p>
+                    <p className="text-3xl font-bold">£4,820</p>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  {[72, 48, 61, 86, 54].map((width, index) => (
+                    <div key={index}>
+                      <div className="mb-2 flex justify-between text-sm text-slate-300">
+                        <span>{["Savings", "Essentials", "Investing", "Income", "Debt reduction"][index]}</span>
+                        <span>{width}%</span>
+                      </div>
+                      <div className="h-3 rounded-full bg-slate-800">
+                        <motion.div initial={{ width: 0 }} animate={{ width: `${width}%` }} transition={{ duration: 0.8, delay: index * 0.08 }} className="h-3 rounded-full bg-gradient-to-r from-emerald-300 to-cyan-300" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 rounded-3xl bg-slate-900/80 p-5">
+                  <div className="flex items-start gap-3">
+                    <Calculator className="mt-1 h-5 w-5 text-emerald-300" />
+                    <div>
+                      <p className="font-semibold">Designer improvement</p>
+                      <p className="mt-1 text-sm leading-6 text-slate-400">Replace generic content with outcome-led messaging, trust signals and a clear booking path.</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </section>
+        <section id="services" className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+          <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">Services</p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">What visitors should understand fast</h2>
+            </div>
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
+                  <h3 className="text-xl font-bold">{item.title}</h3>
+                  <p className="mt-3 leading-7 text-slate-400">{item.copy}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+            </div>
 
-nav a {
-    color: white;
-    text-decoration: none;
-}
-
-.hero {
-    background: #f4f7fb;
-    text-align: center;
-    padding: 80px 20px;
-}
-
-.btn {
-    display: inline-block;
-    background: #0d2f5f;
-    color: white;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-section {
-    padding: 60px 10%;
-}
-
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 600px;
-}
-
-input,
-textarea,
-button {
-    padding: 12px;
-}
-
-button {
-    background: #0d2f5f;
-    color: white;
-    border: none;
-    cursor: pointer;
+        </section>
+  );
 }
